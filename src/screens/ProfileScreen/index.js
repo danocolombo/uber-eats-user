@@ -2,19 +2,19 @@ import { View, Text, TextInput, StyleSheet, Button, Alert } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Auth, DataStore } from 'aws-amplify';
-// import { User } from '../../models';
-// import { useAuthContext } from '../../contexts/AuthContext';
+import { User } from '../../models';
+import { useAuthContext } from '../../contexts/AuthContext';
 import { useNavigation } from '@react-navigation/native';
 
 const Profile = () => {
-    // const { dbUser } = useAuthContext();
-    let dbUser = {};
+    const { dbUser } = useAuthContext();
+    // let dbUser = {};
     const [name, setName] = useState(dbUser?.name || '');
     const [address, setAddress] = useState(dbUser?.address || '');
     const [lat, setLat] = useState(dbUser?.lat + '' || '0');
     const [lng, setLng] = useState(dbUser?.lng + '' || '0');
 
-    // const { sub, setDbUser } = useAuthContext();
+    const { sub, setDbUser } = useAuthContext();
 
     const navigation = useNavigation();
 
